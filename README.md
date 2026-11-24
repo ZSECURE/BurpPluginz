@@ -9,9 +9,9 @@ The source issue bank is not included; use it only with the owner's permission.
 With JDK 17 installed, run `./gradlew clean build`. The extension JAR is
 `build/libs/burp-web-application-assistant.jar`. In Burp, load it as a Java
 extension and select `org.zsecure.burp.assistant.AssistantExtension` if prompted.
-The build targets Montoya API 2026.7; compatibility with a particular Burp
-release or edition has not been validated. Verify this in a test installation
-before use.
+The intended target is Burp Suite Professional v2026.11.2. The build targets
+Montoya API 2026.7; loading and compatibility have not been verified in Burp.
+Verify this in that version before use.
 
 In the **Web Assistant** tab, choose the extracted `08_web_application`
 directory. The importer reads only the 62 exact filenames in the PRD, with a
@@ -28,12 +28,12 @@ Templates are held in memory only and are not written to logs or persisted.
   **not implemented**. Scanner integration and active validation are also absent.
 - No HTTP handlers or request generators are registered. No vulnerability
   detection or coverage assessment is performed.
-- The proprietary archive was not available for testing; the expected YAML
-  structure and all 62 imports must be validated against the approved bank.
-  Import diagnostics do not constitute a complete template validation.
-- Confirm the Burp version and edition, template permission, report integration,
-  risk methodology, and retention policy before implementing the remaining
-  workflow. Do not rely on this prototype for final reporting.
+- One user-provided issue example was validated for its quoted YAML metadata,
+  third-level title, placeholders, and source preservation. The complete
+  proprietary archive and all 62 imports have not been validated.
+- Confirm template permission, report integration, risk methodology, and
+  retention policy before implementing the remaining workflow. Do not rely on
+  this prototype for final reporting.
 
 ## Third-party software
 

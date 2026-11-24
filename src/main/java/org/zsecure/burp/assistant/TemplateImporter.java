@@ -124,8 +124,8 @@ final class TemplateImporter {
         String category = scalar(mapping, "category");
         String cvss = scalar(mapping, "cvss");
         String title = parts[2].lines()
-                .filter(line -> line.startsWith("# "))
-                .map(line -> line.substring(2).trim())
+                .filter(line -> line.matches("^#{1,6}\\s+.+"))
+                .map(line -> line.replaceFirst("^#{1,6}\\s+", "").trim())
                 .filter(line -> !line.isEmpty())
                 .findFirst().orElse(id);
         try {
