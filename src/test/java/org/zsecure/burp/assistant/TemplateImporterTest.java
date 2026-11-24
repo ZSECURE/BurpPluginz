@@ -70,7 +70,7 @@ class TemplateImporterTest {
     @Test
     void flagsUnresolvedOrMissingMetadata() throws Exception {
         Files.writeString(directory.resolve("sql_injection.md"),
-                "---\ncategory: '{==CATEGORY==}'\n---\n# Test\n");
+                "---\ncategory: '{==CATEGORY==}'\ncvss: TBC\n---\n# Test\n");
         var result = new TemplateImporter().importDirectory(directory);
         assertEquals(1, result.templates().size());
         assertTrue(result.diagnostics().contains("sql_injection: category requires review"));

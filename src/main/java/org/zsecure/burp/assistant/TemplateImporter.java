@@ -81,10 +81,10 @@ final class TemplateImporter {
                 }
                 Template template = parse(id, bytes);
                 templates.add(template);
-                if (template.category().isBlank() || template.category().contains("{")) {
+                if (unresolved(template.category()) || template.category().equalsIgnoreCase("N/A")) {
                     diagnostics.add(id + ": category requires review");
                 }
-                if (template.cvss().isBlank() || template.cvss().contains("{")) {
+                if (unresolved(template.cvss())) {
                     diagnostics.add(id + ": CVSS requires review");
                 }
             } catch (IOException | RuntimeException e) {
@@ -92,6 +92,10 @@ final class TemplateImporter {
             }
         }
         return new Result(List.copyOf(templates), List.copyOf(diagnostics));
+    }
+
+    private boolean unresolved(String value) {
+        return value.isBlank() || value.contains("{") || value.equalsIgnoreCase("TBC");
     }
 
     private Template parse(String id, byte[] bytes) throws IOException {
